@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h3>Book Update</h3>
+
+    <form method="post" action="/book/update/" >
+        {% csrf_token %}
+        <input type="hidden" value="update" name="mode">
+        <input type="hidden" value="{{ context.id }}" name="pk_id">
+        Name: <input type="text" name="update_name" value="{{ context.name }}"/>
+        Genre: <input type="text" name="update_genre" value="{{ context.genre }}"/>
+        <input type="submit" value="Update" />
+    </form>
+
+    <form action="/">
+       {% csrf_token %}
+        <input type="submit" value="Back to Home" />
+    </form>
+
+</body>
+</html>

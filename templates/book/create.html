@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Form</title>
+</head>
+<body>
+    <h3>Book Information</h3>
+
+    <form method="post" action="/book/create/" >
+        {% csrf_token %}
+        Book name: <input type="text" name="name" />
+        Genre: <input type="text" name="genre" />
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+</html>

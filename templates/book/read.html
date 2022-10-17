@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Available Books</title>
+</head>
+
+<body>
+    <h1>Available Books</h1>
+
+    {% for object in objects %}
+        <h3> {{ object.id }}, {{ object.name }}, {{ object.genre }} </h3>
+        <form action="/book/update/" method="post">
+            {% csrf_token %}
+            <input type="hidden" value={{ object.id }} name="pk_id">
+            <input type="hidden" value="read" name="mode">
+            <input type="submit" value="Update" />
+        </form>
+
+        <form action="/book/delete/" method="post">
+            {% csrf_token %}
+            <input type="hidden" value={{ object.id }} name="pk_id">
+            <input type="submit" value="Delete" />
+        </form>
+    {% endfor %}
+
+    <form action="/book/create/">
+        <input type="submit" value="Create Book" />
+    </form>
+</body>
+
+</html>
